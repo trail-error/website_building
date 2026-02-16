@@ -12,3 +12,12 @@ $env:DATABASE_URL="postgresql://postgres:Pumpkin%239701451140@localhost:5432/FEB
 
 npx prisma generate
 npx prisma db push
+
+
+
+
+https://binaries.prisma.sh/all_commits/5dbef10bdbfb579e07d35cc85fb1518d357cb99e/windows/libquery_engine-windows.dll.node.gz
+
+https://binaries.prisma.sh/all_commits/5dbef10bdbfb579e07d35cc85fb1518d357cb99e/windows/schema-engine-windows.exe.gz
+
+https://binaries.prisma.sh/all_commits/5dbef10bdbfb579e07d35cc85fb1518d357cb99e/windows/prisma-fmt-windows.exe.gz
