@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" version="24.4.4">
+  <diagram id="azure-pod-mgmt-final" name="Azure Deployment Topology">
+    <mxGraphModel dx="1600" dy="960" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1200" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE -->
+        <mxCell id="title-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#003F7D;strokeColor=none;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="1680" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="title-text" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#FFFFFF;&quot;&gt;AZURE CLOUD DEPLOYMENT TOPOLOGY&lt;/div&gt;&lt;div style=&quot;font-size:9.5px;color:#A8D4F5;margin-top:3px;&quot;&gt;POD Management Platform &amp;nbsp;|&amp;nbsp; Next.js 15 &amp;nbsp;|&amp;nbsp; PostgreSQL &amp;nbsp;|&amp;nbsp; Prisma ORM &amp;nbsp;|&amp;nbsp; JWT &amp;nbsp;|&amp;nbsp; 200 Concurrent Users &amp;nbsp;|&amp;nbsp; 2,000 Active PODs &amp;nbsp;|&amp;nbsp; March 2026&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="1680" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- CI/CD COLUMN BACKGROUND -->
+        <mxCell id="cicd-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF0FA;strokeColor=#9AAABE;strokeWidth=1.5;arcSize=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="10" y="85" width="300" height="1095" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-label" value="&lt;b&gt;&lt;font color=&quot;#1A2E5A&quot; style=&quot;font-size:11px;&quot;&gt;CI / CD  PIPELINE&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="10" y="90" width="300" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- GitHub Repository -->
+        <mxCell id="github" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11px;&quot;&gt;GitHub Repository&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#CCCCCC&quot; style=&quot;font-size:10px;&quot;&gt;Source code &amp;nbsp;|&amp;nbsp; main branch&lt;br&gt;PR-protected &amp;nbsp;|&amp;nbsp; Single source of truth&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B1F23;strokeColor=#000000;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="28" y="120" width="262" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- GitHub Actions -->
+        <mxCell id="gh-actions" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11px;&quot;&gt;GitHub Actions&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#D0E8FF&quot; style=&quot;font-size:10px;&quot;&gt;Trigger: push to main&lt;br&gt;1. pnpm install&lt;br&gt;2. npx prisma migrate deploy&lt;br&gt;3. pnpm build&lt;br&gt;4. Deploy to App Service&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2088FF;strokeColor=#0055BB;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="28" y="228" width="262" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- GitHub Secrets -->
+        <mxCell id="gh-secrets" value="&lt;b&gt;&lt;font color=&quot;#986F0B&quot; style=&quot;font-size:11px;&quot;&gt;GitHub Secrets&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#5a3e00&quot; style=&quot;font-size:10px;&quot;&gt;AZURE_WEBAPP_PUBLISH_PROFILE&lt;br&gt;DATABASE_URL (for migrations)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8DC;strokeColor=#986F0B;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="28" y="378" width="262" height="72" as="geometry" />
+        </mxCell>
+
+        <!-- App Service Configuration -->
+        <mxCell id="appservice-config" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11px;&quot;&gt;App Service  |  Configuration&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#FFF8DC&quot; style=&quot;font-size:10px;&quot;&gt;DATABASE_URL (PostgreSQL + PgBouncer)&lt;br&gt;JWT_SECRET&lt;br&gt;NODE_ENV = production&lt;br&gt;PORT = 3000 &amp;nbsp;|&amp;nbsp; NEXTAUTH_URL&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6D5A1F;strokeColor=#986F0B;strokeWidth=2;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="28" y="474" width="262" height="108" as="geometry" />
+        </mxCell>
+
+        <!-- Build and Startup -->
+        <mxCell id="build-start" value="&lt;b&gt;&lt;font color=&quot;#003F7D&quot; style=&quot;font-size:11px;&quot;&gt;Build &amp;amp; Startup Command&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#222222&quot; style=&quot;font-size:10px;&quot;&gt;Build: &amp;nbsp;pnpm build&lt;/font&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#0D7377&quot; style=&quot;font-size:10px;&quot;&gt;Start: &amp;nbsp;node server.js&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#44485A&quot; style=&quot;font-size:9.5px;&quot;&gt;(Next.js + node-cron in one process)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF4FF;strokeColor=#0078D4;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="28" y="612" width="262" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- CI/CD Arrows -->
+        <mxCell id="arr-git-act" value="push to main" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#444444;strokeWidth=2;fontColor=#444444;fontSize=9;fontStyle=1;" edge="1" source="github" target="gh-actions" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-act-sec" value="reads secrets" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#986F0B;strokeWidth=1.5;dashed=1;fontColor=#986F0B;fontSize=9;fontStyle=1;" edge="1" source="gh-actions" target="gh-secrets" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-act-deploy" value="deploys code" style="edgeStyle=elbowEdgeStyle;html=1;strokeColor=#2088FF;strokeWidth=2.5;fontColor=#2088FF;fontSize=10;fontStyle=1;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.28;entryDx=0;entryDy=0;" edge="1" source="gh-actions" target="appservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-config-inject" value="injects environment variables" style="edgeStyle=elbowEdgeStyle;html=1;strokeColor=#986F0B;strokeWidth=1.5;dashed=1;fontColor=#986F0B;fontSize=9;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.72;entryDx=0;entryDy=0;" edge="1" source="appservice-config" target="appservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- USERS -->
+        <mxCell id="users" value="&lt;b&gt;&lt;font color=&quot;#003F7D&quot; style=&quot;font-size:12px;&quot;&gt;200 Concurrent Users &amp;nbsp;--&amp;nbsp; Engineers &amp;nbsp;|&amp;nbsp; Admins &amp;nbsp;|&amp;nbsp; Priority Users &amp;nbsp;|&amp;nbsp; Super Admins&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#44485A&quot; style=&quot;font-size:10px;&quot;&gt;All roles working simultaneously &amp;nbsp;|&amp;nbsp; HTTPS TLS 1.3 &amp;nbsp;|&amp;nbsp; JWT Bearer token on every request &amp;nbsp;|&amp;nbsp; Role-based access enforced server-side on all API routes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0E8FA;strokeColor=#0078D4;strokeWidth=2;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="328" y="85" width="960" height="72" as="geometry" />
+        </mxCell>
+
+        <!-- APP SERVICE -->
+        <mxCell id="appservice" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11.5px;&quot;&gt;Azure App Service &amp;nbsp;--&amp;nbsp; Basic B2 &amp;nbsp;|&amp;nbsp; 2 vCPU Dedicated &amp;nbsp;|&amp;nbsp; 3.5 GB RAM &amp;nbsp;|&amp;nbsp; Linux &amp;nbsp;|&amp;nbsp; Node.js 20 LTS &amp;nbsp;|&amp;nbsp; ~$26 / month&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#D0E8FA&quot; style=&quot;font-size:10px;&quot;&gt;Dedicated compute -- 100% of 2 vCPU available continuously. No burst credit system.&lt;br&gt;&lt;br&gt;Single process via &lt;b&gt;node server.js&lt;/b&gt;: &amp;nbsp;Next.js 15 SSR &amp;nbsp;+&amp;nbsp; All API Routes &amp;nbsp;+&amp;nbsp; Prisma ORM &amp;nbsp;+&amp;nbsp; JWT Auth &amp;nbsp;+&amp;nbsp; node-cron scheduler&lt;br&gt;&lt;br&gt;Excel Export: query DB, build .xlsx in-memory (~88 MB RAM peak), stream to browser, memory freed on completion.&lt;br&gt;Excel Import: xlsx library parses file in the browser. Only JSON payload sent to server. Zero file memory consumed on server.&lt;br&gt;Notifications: GET /api/notifications every 30s -- simple indexed SELECT on Notification table.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0078D4;strokeColor=#003F7D;strokeWidth=2.5;fontColor=#FFFFFF;arcSize=4;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="328" y="215" width="960" height="225" as="geometry" />
+        </mxCell>
+
+        <!-- Internal component pills -->
+        <mxCell id="pill-nextjs" value="&lt;b&gt;Next.js 15 SSR&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#005A9E;strokeColor=#003F7D;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="338" y="376" width="148" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pill-api" value="&lt;b&gt;API Routes&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#005A9E;strokeColor=#003F7D;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="496" y="376" width="148" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pill-prisma" value="&lt;b&gt;Prisma ORM&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D7377;strokeColor=#054040;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="654" y="376" width="148" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pill-jwt" value="&lt;b&gt;JWT Auth&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C2D91;strokeColor=#3B1278;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="812" y="376" width="148" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pill-cron" value="&lt;b&gt;node-cron&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C2D91;strokeColor=#3B1278;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="970" y="376" width="148" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pill-server" value="&lt;b&gt;node server.js&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#107C10;strokeColor=#054305;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1128" y="376" width="148" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Users to App Service arrow -->
+        <mxCell id="arr-users-app" value="HTTPS Requests" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#0078D4;strokeWidth=3;fontColor=#0078D4;fontSize=11;fontStyle=1;" edge="1" source="users" target="appservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTION STRIP -->
+        <mxCell id="conn-strip" value="&lt;b&gt;&lt;font color=&quot;#5C2D91&quot;&gt;Database Connection:&lt;/font&gt;&lt;/b&gt; &amp;nbsp;&lt;font color=&quot;#0D7377&quot;&gt;postgresql://user:pass@server.postgres.database.azure.com:&lt;b&gt;6432&lt;/b&gt;/poddb?sslmode=require&amp;amp;connection_limit=10&amp;amp;pool_timeout=10&lt;/font&gt; &amp;nbsp;&amp;nbsp;&lt;b&gt;&lt;font color=&quot;#5C2D91&quot;&gt;| &amp;nbsp;PgBouncer: port 6432 &amp;nbsp;| &amp;nbsp;Built-in to PostgreSQL Flexible Server &amp;nbsp;| &amp;nbsp;No additional cost&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F4FF;strokeColor=#5C2D91;strokeWidth=2;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="328" y="455" width="960" height="52" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arr-app-conn" value="SSL  |  PgBouncer port 6432  |  connection_limit = 10" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#5C2D91;strokeWidth=2.5;fontColor=#5C2D91;fontSize=10;fontStyle=1;" edge="1" source="appservice" target="conn-strip" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr-conn-pg" value="Prisma queries  |  private VNet  |  SSL enforced" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#107C10;strokeWidth=3;fontColor=#107C10;fontSize=10;fontStyle=1;" edge="1" source="conn-strip" target="pg-ha-wrapper" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- AZURE REGION -->
+        <mxCell id="region-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF5EB;strokeColor=#107C10;strokeWidth=2.5;arcSize=2;opacity=35;" vertex="1" parent="1">
+          <mxGeometry x="318" y="528" width="970" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="region-label" value="&lt;b&gt;&lt;font color=&quot;#054305&quot;&gt;Azure Region -- East US &amp;nbsp;|&amp;nbsp; App Service and PostgreSQL communicate over private virtual network &amp;nbsp;|&amp;nbsp; PostgreSQL has no public internet endpoint&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=top;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="318" y="534" width="970" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- POSTGRESQL HA WRAPPER -->
+        <mxCell id="pg-ha-wrapper" value="&lt;b&gt;&lt;font color=&quot;#054305&quot; style=&quot;font-size:12.5px;&quot;&gt;Azure Database for PostgreSQL -- Flexible Server -- Zone-Redundant High Availability&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#44485A&quot; style=&quot;font-size:10px;&quot;&gt;Burstable B2ms &amp;nbsp;|&amp;nbsp; 2 vCPU &amp;nbsp;|&amp;nbsp; 8 GB RAM &amp;nbsp;|&amp;nbsp; 128 GB SSD &amp;nbsp;|&amp;nbsp; Auto-grow &amp;nbsp;|&amp;nbsp; SSL enforced &amp;nbsp;|&amp;nbsp; ~$213 / month &amp;nbsp;(Primary ~$99 + Standby ~$99 + Storage ~$15)&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#7a5a00&quot; style=&quot;font-size:9px;&quot;&gt;Note: B2ms is a burstable SKU. Monitor PostgreSQL CPU credit balance post go-live. Upgrade to General Purpose tier (~+$70/month) if credits consistently fall below 20%.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#107C10;strokeWidth=2.5;arcSize=3;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="333" y="562" width="940" height="590" as="geometry" />
+        </mxCell>
+
+        <!-- AZ1 PRIMARY -->
+        <mxCell id="az1-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#107C10;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="348" y="626" width="420" height="506" as="geometry" />
+        </mxCell>
+        <mxCell id="az1-label" value="&lt;b&gt;&lt;font color=&quot;#054305&quot; style=&quot;font-size:11px;&quot;&gt;Availability Zone 1 -- PRIMARY&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="348" y="634" width="420" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- PostgreSQL Primary -->
+        <mxCell id="pg-primary" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11px;&quot;&gt;PostgreSQL  PRIMARY  (Read / Write)&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#DFF6DD&quot; style=&quot;font-size:10px;&quot;&gt;All application reads and writes directed here.&lt;br&gt;&lt;br&gt;Tables:&lt;br&gt;Pod &amp;nbsp;|&amp;nbsp; User &amp;nbsp;|&amp;nbsp; Notification &amp;nbsp;|&amp;nbsp; Transaction&lt;br&gt;PodStatusHistory &amp;nbsp;|&amp;nbsp; LogIssue &amp;nbsp;|&amp;nbsp; AutofillPod&lt;br&gt;&lt;br&gt;PgBouncer on port 6432.&lt;br&gt;connection_limit = 10 pooled connections.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#107C10;strokeColor=#054305;strokeWidth=2;fontColor=#FFFFFF;arcSize=6;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="363" y="670" width="390" height="208" as="geometry" />
+        </mxCell>
+
+        <!-- WAL -->
+        <mxCell id="pg-wal" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11px;&quot;&gt;Write-Ahead Log (WAL)&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#D8F0F0&quot; style=&quot;font-size:10px;&quot;&gt;Write confirmed to application ONLY after:&lt;br&gt;&lt;br&gt;1. WAL record written to disk (AZ1).&lt;br&gt;2. Standby (AZ2) has acknowledged receipt.&lt;br&gt;&lt;br&gt;If application receives success response,&lt;br&gt;data is durable on both zones.&lt;br&gt;Partial writes and silent data loss are impossible.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D7377;strokeColor=#054040;strokeWidth=2;fontColor=#FFFFFF;arcSize=6;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="363" y="896" width="390" height="216" as="geometry" />
+        </mxCell>
+
+        <!-- AZ2 STANDBY -->
+        <mxCell id="az2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF9F9;strokeColor=#A4262C;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="797" y="626" width="458" height="506" as="geometry" />
+        </mxCell>
+        <mxCell id="az2-label" value="&lt;b&gt;&lt;font color=&quot;#A4262C&quot; style=&quot;font-size:11px;&quot;&gt;Availability Zone 2 -- STANDBY&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="797" y="634" width="458" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- PostgreSQL Standby -->
+        <mxCell id="pg-standby" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11px;&quot;&gt;PostgreSQL  STANDBY  (Hot Replica)&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#F9E0E1&quot; style=&quot;font-size:10px;&quot;&gt;Exact, synchronous copy of Primary at all times.&lt;br&gt;Not used for reads -- zero load, purely on standby.&lt;br&gt;&lt;br&gt;Automatic failover:&lt;br&gt;&amp;nbsp;&amp;nbsp;T + 0s &amp;nbsp;&amp;nbsp;: Primary becomes unreachable.&lt;br&gt;&amp;nbsp;&amp;nbsp;T + 30s : Azure health checks detect failure.&lt;br&gt;&amp;nbsp;&amp;nbsp;T + 60s : Standby promoted to new Primary.&lt;br&gt;&amp;nbsp;&amp;nbsp;T + 65s : Prisma reconnects automatically.&lt;br&gt;&lt;br&gt;Result: Zero data loss. ~60 second recovery window.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A4262C;strokeColor=#8B0000;strokeWidth=2;fontColor=#FFFFFF;arcSize=6;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="812" y="670" width="428" height="248" as="geometry" />
+        </mxCell>
+
+        <!-- Automated Backups -->
+        <mxCell id="pg-backups" value="&lt;b&gt;&lt;font color=&quot;#FFFFFF&quot; style=&quot;font-size:11px;&quot;&gt;Automated Backups &amp;amp; Point-in-Time Recovery&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#EDE0F7&quot; style=&quot;font-size:10px;&quot;&gt;Retention: 7 days (configurable to 35 days).&lt;br&gt;Full backup daily. WAL archived continuously.&lt;br&gt;&lt;br&gt;Restore to any specific second in the past 7 days.&lt;br&gt;&lt;br&gt;Included -- no additional charge.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C2D91;strokeColor=#3B1278;strokeWidth=2;fontColor=#FFFFFF;arcSize=6;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="812" y="936" width="428" height="176" as="geometry" />
+        </mxCell>
+
+        <!-- Replication Arrow -->
+        <mxCell id="arr-replication" value="synchronous streaming replication" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#107C10;strokeWidth=2.5;fontColor=#107C10;fontSize=10;fontStyle=1;" edge="1" source="pg-primary" target="pg-standby" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Failover annotation -->
+        <mxCell id="failover-note" value="&lt;b&gt;&lt;font color=&quot;#A4262C&quot;&gt;Auto-failover &amp;nbsp;~60 seconds&lt;br&gt;Zero data loss&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F9E0E1;strokeColor=#A4262C;strokeWidth=1.5;fontSize=10;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="647" y="658" width="165" height="46" as="geometry" />
+        </mxCell>
+
+        <!-- COST PANEL -->
+        <mxCell id="cost-panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C8D0DC;strokeWidth=1.5;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="85" width="380" height="1083" as="geometry" />
+        </mxCell>
+        <mxCell id="cost-title" value="&lt;b&gt;&lt;font color=&quot;#003F7D&quot; style=&quot;font-size:13px;&quot;&gt;SIZING &amp;amp; COST ESTIMATE&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="94" width="380" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cost-content" value="&lt;b&gt;&lt;font color=&quot;#003F7D&quot;&gt;App Service  --  Basic B2&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#44485A&quot;&gt;  2 vCPU Dedicated (not burstable)&lt;br&gt;  3.5 GB RAM &amp;nbsp;|&amp;nbsp; Linux &amp;nbsp;|&amp;nbsp; Node.js 20&lt;br&gt;  Handles 200 users comfortably&lt;br&gt;  34 simultaneous Excel exports safe&lt;br&gt;  Fixed pricing -- no per-request billing&lt;/font&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#107C10&quot;&gt;  ~$26 / month&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#054305&quot;&gt;PostgreSQL Flexible Server&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#44485A&quot;&gt;  Burstable B2ms &amp;nbsp;|&amp;nbsp; 2 vCPU &amp;nbsp;|&amp;nbsp; 8 GB&lt;br&gt;  128 GB SSD &amp;nbsp;|&amp;nbsp; Auto-grow enabled&lt;br&gt;  Zone-Redundant HA (billed x2):&lt;br&gt;  &amp;nbsp;&amp;nbsp;Primary compute: &amp;nbsp;~$99/month&lt;br&gt;  &amp;nbsp;&amp;nbsp;Standby compute: ~$99/month&lt;br&gt;  &amp;nbsp;&amp;nbsp;Storage 128 GB: &amp;nbsp;~$15/month&lt;br&gt;  &amp;nbsp;&amp;nbsp;Backups: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;included&lt;br&gt;  &amp;nbsp;&amp;nbsp;PgBouncer: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;included&lt;/font&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#107C10&quot;&gt;  ~$213 / month&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#C8D0DC&quot;&gt;  ─────────────────────────────&lt;/font&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#003F7D&quot; style=&quot;font-size:12px;&quot;&gt;  Pay-as-you-go: ~$253-270/mo&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#003F7D&quot;&gt;  Budget ceiling: ~$280-300/mo&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#C8D0DC&quot;&gt;  ─────────────────────────────&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#054305&quot;&gt;1-Year Reserved (recommended)&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#44485A&quot;&gt;  App Service:  ~$18/month&lt;br&gt;  PostgreSQL:   ~$120/month&lt;br&gt;  Storage/misc: ~$15/month&lt;/font&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#107C10&quot; style=&quot;font-size:12px;&quot;&gt;  Target: ~$165/month&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#107C10&quot;&gt;  Annual saving: ~$1,032/year&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#C8D0DC&quot;&gt;  ─────────────────────────────&lt;/font&gt;&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#003F7D&quot;&gt;Scaling Path&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#44485A&quot;&gt;  No redesign needed to grow.&lt;br&gt;  Upgrade App Service plan or&lt;br&gt;  PostgreSQL SKU independently.&lt;br&gt;&lt;br&gt;&lt;b&gt;Write Durability: 3 Layers&lt;/b&gt;&lt;br&gt;  1. Prisma transactions (atomic)&lt;br&gt;  2. PostgreSQL WAL (disk-durable)&lt;br&gt;  3. Zone-HA (cross-zone sync)&lt;br&gt;&lt;br&gt;  Committed write survives&lt;br&gt;  any single-zone failure.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingLeft=14;spacingRight=10;spacingTop=8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="122" width="380" height="1020" as="geometry" />
+        </mxCell>
+
+        <!-- LEGEND -->
+        <mxCell id="legend-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C8D0DC;strokeWidth=1.5;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="10" y="1190" width="1680" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-text" value="&lt;font color=&quot;#0078D4&quot;&gt;&amp;#x2192; Solid arrow -- live request / query / replication data flow&lt;/font&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;font color=&quot;#986F0B&quot;&gt;- - &amp;#x2192; Dashed arrow -- configuration / secret injection at deploy time&lt;/font&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;font color=&quot;#107C10&quot;&gt;WAL -- write confirmed only after durable on both AZ1 and AZ2&lt;/font&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;font color=&quot;#A4262C&quot;&gt;Zone-HA -- ~60 second automatic failover, zero data loss&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="10" y="1190" width="1680" height="48" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
