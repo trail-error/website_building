@@ -10,6 +10,14 @@ $env:PRISMA_FMT_BINARY="C:\Users\mj1103\Downloads\learning_building_websites-mai
 
 
 
+We have about 20 engineers who manually update a shared Excel file for every single POD change. We run two PMO status meetings per week with three teams — roughly 30 people — where the primary purpose is reconciling what that spreadsheet says. And on top of that, the constant back-and-forth messages and missed email threads to track down POD status represent significant untracked interruption cost across all three teams.
+Conservatively, this adds up to roughly 320 person-hours per month of coordination overhead. At a loaded engineer rate of $65/hour, that is approximately $20,800 per month in labor being spent to maintain a manual tracking process and staying on top of things.
+That is $249,600 per year in engineer time spent on coordination rather than actual deployment work.
+The Azure subscription costs $280 per month — $3,360 per year.
+The platform pays for itself 74 times over every month. And that is using only the two most conservative, directly measurable time buckets — meetings and manual updates. It does not include time lost to missed notifications, status-chasing messages, or the mental overhead of working from a spreadsheet that 30 people are editing simultaneously.
+We understand the VP org is managing against its 2026 Azure budget. This subscription at $280 per month is offset more than 74 times over by the engineer hours it recovers — hours that go back into productive deployment work rather than coordination overhead.
+
+
 
 1. Business Justification
 
